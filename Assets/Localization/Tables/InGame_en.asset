@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: InGame_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 7437c6455bc7cb3439adab845c8d41b9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16042295296
+    m_Localized: Wonju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1625031835648
+    m_Localized: Chuncheon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1678937030656
+    m_Localized: Gangneung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768833548288
+    m_Localized: Donghae
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16344912363520
+    m_Localized: Sockcho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16401095065600
+    m_Localized: Samcheok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20182679552000
+    m_Localized: Pyeongchang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20365991608320
+    m_Localized: Ulleungdo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28135876853760
+    m_Localized: Seoul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28214473916416
+    m_Localized: Incheon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34321829330944
+    m_Localized: Suwon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51470274789376
+    m_Localized: Goyang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51816837545984
+    m_Localized: Youngin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53825699446784
+    m_Localized: Seongnam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 136800571097088
+    m_Localized: Namyangju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138531719741440
+    m_Localized: Hwaseong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138670689615872
+    m_Localized: Paju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138842614136832
+    m_Localized: Chungju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139004707209216
+    m_Localized: Cheonan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161138380767232
+    m_Localized: Sejong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161198938128384
+    m_Localized: Daejeon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161379939123200
+    m_Localized: Cheongju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161620771864576
+    m_Localized: Seosan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161762363179008
+    m_Localized: Gwangju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164780894715904
+    m_Localized: Jeonju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164907071963136
+    m_Localized: Gunsan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165486942879744
+    m_Localized: Yeosu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165609378807808
+    m_Localized: Mokpo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165738655645696
+    m_Localized: Jeju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179528067579904
+    m_Localized: Busan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179572183269376
+    m_Localized: Ulsan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179748633444352
+    m_Localized: Daegu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180066901426176
+    m_Localized: Geoje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180250788102144
+    m_Localized: Changwon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180761679495168
+    m_Localized: Jinju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181109492154368
+    m_Localized: Geochang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181168539566080
+    m_Localized: Pohang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181239465246720
+    m_Localized: Gumi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181943416258560
+    m_Localized: Andong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 182027839209472
+    m_Localized: Uljin
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

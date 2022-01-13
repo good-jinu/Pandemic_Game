@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 84404baa8adc5c741b7ae92ae4a69dc0
   m_Entries:
   - m_Id: 30869159936
-    m_Key: PlayButton
+    m_Key: Play
     m_Metadata:
       m_Items: []
   - m_Id: 5789594025984
@@ -24,19 +24,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6724542136320
-    m_Key: OptionButton
+    m_Key: Option
     m_Metadata:
       m_Items: []
   - m_Id: 6790862471168
-    m_Key: QuitButton
+    m_Key: Quit
     m_Metadata:
       m_Items: []
   - m_Id: 6949335859200
-    m_Key: HowButton
+    m_Key: Howtoplay
     m_Metadata:
       m_Items: []
   - m_Id: 21036354633728
-    m_Key: CloseButton
+    m_Key: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2613828729831424
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2630350936342528
+    m_Key: Korea
     m_Metadata:
       m_Items: []
   m_Metadata:

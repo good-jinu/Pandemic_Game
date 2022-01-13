@@ -8,6 +8,7 @@ namespace CamRelated
     {
         public Camera maincam;
         public CamRelated.SwipeMovement swipemov;
+        public GameObject cities;
 
         private float size_lvl1;//farthest
         private float size_lvl2;
@@ -35,6 +36,15 @@ namespace CamRelated
                 default:
                     lvl_tmp = 10.0f;
                     break;
+            }
+
+            if(cur_size_lvl>=2)
+            {
+                cities.SetActive(true);
+            }
+            else
+            {
+                cities.SetActive(false);
             }
 
             maincam.orthographicSize = lvl_tmp;

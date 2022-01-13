@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: InGame Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: InGame_Cities
+  m_TableCollectionNameGuidString: 7437c6455bc7cb3439adab845c8d41b9
+  m_Entries:
+  - m_Id: 16042295296
+    m_Key: Wonju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1625031835648
+    m_Key: Chuncheon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1678937030656
+    m_Key: Gangneung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768833548288
+    m_Key: Donghae
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16344912363520
+    m_Key: Sockcho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16401095065600
+    m_Key: Samcheok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20182679552000
+    m_Key: Pyeongchang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20365991608320
+    m_Key: Ulleungdo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28135876853760
+    m_Key: Seoul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28214473916416
+    m_Key: Incheon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34321829330944
+    m_Key: Suwon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51470274789376
+    m_Key: Goyang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51816837545984
+    m_Key: Youngin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53825699446784
+    m_Key: Seongnam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 136800571097088
+    m_Key: Namyangju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138531719741440
+    m_Key: Hwaseong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138670689615872
+    m_Key: Paju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138842614136832
+    m_Key: Chungju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139004707209216
+    m_Key: Cheonan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161138380767232
+    m_Key: Sejong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161198938128384
+    m_Key: Daejeon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161379939123200
+    m_Key: Cheongju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161620771864576
+    m_Key: Seosan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161762363179008
+    m_Key: Gwangju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164780894715904
+    m_Key: Jeonju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164907071963136
+    m_Key: Gunsan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165486942879744
+    m_Key: Yeosu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165609378807808
+    m_Key: Mokpo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165738655645696
+    m_Key: Jeju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179528067579904
+    m_Key: Busan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179572183269376
+    m_Key: Ulsan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179748633444352
+    m_Key: Daegu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180066901426176
+    m_Key: Geoje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180250788102144
+    m_Key: Changwon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180761679495168
+    m_Key: Jinju
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181109492154368
+    m_Key: Geochang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181168539566080
+    m_Key: Pohang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181239465246720
+    m_Key: Gumi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181943416258560
+    m_Key: Andong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 182027839209472
+    m_Key: Uljin
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1641962795219
