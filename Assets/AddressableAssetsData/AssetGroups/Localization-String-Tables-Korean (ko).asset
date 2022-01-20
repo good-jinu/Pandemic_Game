@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ko
     - Preload
+  - m_GUID: 01efd9860f3b4f64e92de62ab45783d2
+    m_Address: InGame_Table_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 9ec9f9e26f8f01c478894de3e6619579, type: 2}
   m_SchemaSet:

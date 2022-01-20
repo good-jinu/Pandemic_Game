@@ -36,7 +36,7 @@ namespace CamRelated
                 }
                 if(fingerdown&&Input.touches[0].phase==TouchPhase.Moved)
                 {
-                    movedvector = Input.touches[0].position - prevpos;
+                    movedvector = (Vector2)Input.mousePosition - prevpos;
                     StartCoroutine(moveCam());
                     prevpos = Input.touches[0].position;
 
@@ -46,7 +46,7 @@ namespace CamRelated
                     fingerdown = false;
                 }
 #else
-                if(fingerdown==false&&Input.GetMouseButtonDown(0))
+                if (fingerdown==false&&Input.GetMouseButtonDown(0))
                 {
                     prevpos = Input.mousePosition;
                     fingerdown = true;
@@ -124,13 +124,10 @@ namespace CamRelated
 
         IEnumerator moveCam()
         {
-            Vector3 movedvector3 = movement_intensity * movedvector;
-            Vector3 scbottomleft = Camera.main.WorldToScreenPoint((Vector3)endofworld_leftbottom);
-            Vector3 sctopright = Camera.main.WorldToScreenPoint((Vector3)endofworld_topright);
-            for( int i=1; i<zoomlvl; i++)
-            {
-                movedvector3 = movedvector3 / 2;
-            }
+            Vector3 movedvector3 = Camera.main.ScreenToWorldPoint(movedvector);
+            movedvector3 = movedvector3 - Camera.main.ScreenToWorldPoint(Vector3.zero);
+            movedvector3 = movedvector3 * movement_intensity;
+
             Vector3 tmp = objpos.position - movedvector3;
 
             if (tmp.x <endofworld_leftbottom.x)
@@ -153,6 +150,12 @@ namespace CamRelated
             objpos.position = tmp;
 
             yield return null;
+        }
+
+        public void setActiveSwipe(bool value)
+        {
+            fingerdown = false;
+            is_swipe_activating = value;
         }
     }
 }
