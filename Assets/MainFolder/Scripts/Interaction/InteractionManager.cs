@@ -6,6 +6,7 @@ public class InteractionManager : MonoBehaviour
 {
     public CamRelated.SwipeMovement swipe_obj;
     public CityRelated.CitySelection selected_city_ui;
+    public GameObject basic_UI;
 
     private Vector3 touchposworld;
     private bool interaction_activate;
@@ -61,6 +62,7 @@ public class InteractionManager : MonoBehaviour
     public void setActiveAllInteraction(bool value)
     {
         swipe_obj.setActiveSwipe(value);
+        basic_UI.SetActive(value);
         interaction_activate = value;
     }
 

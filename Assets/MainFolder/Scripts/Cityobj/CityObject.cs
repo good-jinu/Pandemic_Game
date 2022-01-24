@@ -5,6 +5,8 @@ using UnityEngine;
 namespace CityRelated
 {
     public enum DiseaseColor { None=0, Red, Green, Blue, Yellow};
+    public enum DiseaseGneratingState { Succeed = 0, Cured, Outbreak};
+
     public class CityObject : MonoBehaviour
     {
         public CityObject[] neighbor_city;
@@ -15,9 +17,17 @@ namespace CityRelated
 
         private DiseaseColor[] disease_cubes = new DiseaseColor[3];
         private int city_id;
+        private static bool red_cure = false;
+        private static bool green_cure = false;
+        private static bool blue_cure = false;
+        private static bool yellow_cure = false;
         
         public DiseaseColor[] Disease_cubes { get { return disease_cubes; } }
         public int City_id { get { return city_id; } set { city_id = value; } }
+        public static bool Red_cure { get { return red_cure; } set { red_cure = value; } }
+        public static bool Green_cure { get { return green_cure; } set { green_cure = value; } }
+        public static bool Blue_cure { get { return blue_cure; } set { blue_cure = value; } }
+        public static bool Yellow_cure { get { return yellow_cure; } set { yellow_cure = value; } }
 
         private void Awake()
         {
@@ -61,17 +71,37 @@ namespace CityRelated
             return inserted;
         }
 
-        public bool generateOriginDisease(int count)
+        public DiseaseGneratingState generateOriginDisease(int count)
         {
+            switch(city_color)
+            {
+                case DiseaseColor.Red:
+                    if (Red_cure)
+                        return DiseaseGneratingState.Cured;
+                    break;
+                case DiseaseColor.Green:
+                    if (Green_cure)
+                        return DiseaseGneratingState.Cured;
+                    break;
+                case DiseaseColor.Blue:
+                    if (Blue_cure)
+                        return DiseaseGneratingState.Cured;
+                    break;
+                case DiseaseColor.Yellow:
+                    if (Yellow_cure)
+                        return DiseaseGneratingState.Cured;
+                    break;
+            }
+
             for(int i=0; i<count; i++)
             {
                 if(!addDisease(city_color))
                 {
-                    return false;
+                    return DiseaseGneratingState.Outbreak;
                 }
             }
 
-            return true;
+            return DiseaseGneratingState.Succeed;
         }
 
         //return true if it succeeds to treat disease. otherwise return false

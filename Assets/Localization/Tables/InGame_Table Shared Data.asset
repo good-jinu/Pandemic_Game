@@ -31,6 +31,26 @@ MonoBehaviour:
     m_Key: Cards
     m_Metadata:
       m_Items: []
+  - m_Id: 1091106132590592
+    m_Key: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1091987737542656
+    m_Key: Round Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092199231127552
+    m_Key: Outbreaks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1836602245644288
+    m_Key: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1850915702308864
+    m_Key: Discard
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

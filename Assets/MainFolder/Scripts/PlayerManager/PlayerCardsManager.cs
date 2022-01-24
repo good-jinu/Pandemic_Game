@@ -59,6 +59,7 @@ namespace Player
 
             cities[cards_count] = inserted;
             cards_count++;
+            sortCards();
             return true;
         }
 
@@ -71,6 +72,11 @@ namespace Player
             cities[ind] = null;
             sortCards();
             return true;
+        }
+
+        public int getCardSpaceLeft()
+        {
+            return 10 - cards_count;
         }
     }
 }

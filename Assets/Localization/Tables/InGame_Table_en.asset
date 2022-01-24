@@ -34,5 +34,25 @@ MonoBehaviour:
     m_Localized: Cards
     m_Metadata:
       m_Items: []
+  - m_Id: 1091106132590592
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1091987737542656
+    m_Localized: You couldn't stop the pandemic in 25 rounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092199231127552
+    m_Localized: you let the outbreak level reach 8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1836602245644288
+    m_Localized: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1850915702308864
+    m_Localized: Discard
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

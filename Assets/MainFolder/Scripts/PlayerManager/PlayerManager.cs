@@ -17,7 +17,7 @@ namespace Player
         {
             current_city_id = cityid;
             locator.transform.position = new Vector3
-                (citymanager.Citylist[current_city_id].transform.position.x, citymanager.Citylist[current_city_id].transform.position.y + 0.5f, 40);
+                (citymanager.Citylist[current_city_id].transform.position.x+0.75f, citymanager.Citylist[current_city_id].transform.position.y + 1f, 40);
         }
     }
 }

@@ -7,11 +7,11 @@ namespace CityRelated
 {
     public class CityManager : MonoBehaviour
     {
-        private CityObject[] citylist;
+        private CityObject[] citylist = null;
 
         public CityObject[] Citylist { get { return citylist; } }
 
-        private void Awake()
+        public void initiate()
         {
             citylist = transform.GetComponentsInChildren<CityObject>();
             for(int i=0; i<citylist.Length; i++)
