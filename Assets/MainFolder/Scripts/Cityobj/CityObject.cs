@@ -141,6 +141,16 @@ namespace CityRelated
             return cured;
         }
 
+        public bool isCubeOn(DiseaseColor dcolor)
+        {
+            for(int i=0; i<3; i++)
+            {
+                if (disease_cubes[i] == dcolor)
+                    return true;
+            }
+            return false;
+        }
+
         public bool buildStation()
         {
             if (station_area.activeSelf == false)
