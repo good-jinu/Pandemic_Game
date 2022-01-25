@@ -17,8 +17,7 @@ namespace CamRelated
         public CamRelated.SwipeMovement swimov;
         public CamRelated.ZoomAction zooma;
 
-        // Start is called before the first frame update
-        void Start()
+        public void init()
         {
             zooma.Size_lvl1 = zoom_lvl1;
             zooma.Size_lvl2 = zoom_lvl2;
@@ -26,12 +25,6 @@ namespace CamRelated
             zooma.initZoomLVL();
             swimov.setEndOfWorld(bottomleft, topright);
             swimov.Movement_Intensity = mov_intensity;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

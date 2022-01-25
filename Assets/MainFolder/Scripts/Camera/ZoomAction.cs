@@ -38,7 +38,7 @@ namespace CamRelated
                     break;
             }
 
-            if(cur_size_lvl>=2)
+            if (cur_size_lvl>=2)
             {
                 cities.SetActive(true);
             }
@@ -67,6 +67,37 @@ namespace CamRelated
             if (cur_size_lvl > 3)
                 cur_size_lvl = 3;
             initZoomLVL();
+        }
+
+        public void setSizeLVL(int value)
+        {
+            cur_size_lvl = value;
+            switch (cur_size_lvl)
+            {
+                case 1:
+                    maincam.orthographicSize = size_lvl1;
+                    break;
+                case 2:
+                    maincam.orthographicSize = size_lvl2;
+                    break;
+                case 3:
+                    maincam.orthographicSize = size_lvl3;
+                    break;
+                default:
+                    maincam.orthographicSize = 10.0f;
+                    break;
+            }
+
+            if (cur_size_lvl >= 2)
+            {
+                cities.SetActive(true);
+            }
+            else
+            {
+                cities.SetActive(false);
+            }
+
+            swipemov.refreshEndOfWorld();
         }
     }
 }

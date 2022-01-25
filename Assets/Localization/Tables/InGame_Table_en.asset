@@ -54,5 +54,13 @@ MonoBehaviour:
     m_Localized: Discard
     m_Metadata:
       m_Items: []
+  - m_Id: 1951585264599040
+    m_Localized: is infected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1951936248152064
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

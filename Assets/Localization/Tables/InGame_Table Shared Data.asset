@@ -51,6 +51,14 @@ MonoBehaviour:
     m_Key: Discard
     m_Metadata:
       m_Items: []
+  - m_Id: 1951585264599040
+    m_Key: is infected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1951936248152064
+    m_Key: OK
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

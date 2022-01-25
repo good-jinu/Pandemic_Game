@@ -12,6 +12,7 @@ public class InteractionManager : MonoBehaviour
     private bool interaction_activate;
     private CityRelated.CityObject touchedobj;
     private int window_count = 0;
+    private bool set_swipe;
 
     private void Awake()
     {
@@ -66,11 +67,21 @@ public class InteractionManager : MonoBehaviour
         interaction_activate = value;
     }
 
+    public void setSwipe(bool value)
+    {
+        swipe_obj.setActiveSwipe(value);
+    }
+
     public void setInteractionByWindow()
     {
         if (window_count > 0)
         {
             setActiveAllInteraction(false);
+            if(set_swipe)
+            {
+                setSwipe(true);
+                set_swipe = false;
+            }
         }
         else
         {
@@ -88,5 +99,12 @@ public class InteractionManager : MonoBehaviour
     {
         window_count -= count;
         setInteractionByWindow();
+    }
+
+    public void addWindowStayingSwipe()
+    {
+        window_count++;
+        setInteractionByWindow();
+        set_swipe = true;
     }
 }

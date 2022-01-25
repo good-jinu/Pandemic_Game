@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameInitiator : MonoBehaviour
+public class GameInitiator : CamRelated.MotionIncluding
 {
     public CityRelated.CityManager citymanager;
     public InfectionManager infectionmanager;
     public Player.PlayerManager player;
     public Player.PlayerCardSelector player_cards_selector;
+    public CamRelated.CamInitiator cam_init;
+    public CamRelated.CamMotion cam_motion;
+
+    private int init_ind;
 
     private void Awake()
     {
-        citymanager.gameObject.SetActive(true);
         citymanager.initiate();
-        citymanager.gameObject.SetActive(false);
         infectionmanager.initiate();
         player.setLocatedCity(Random.Range(0, citymanager.Citylist.Length));
     }
@@ -25,13 +27,29 @@ public class GameInitiator : MonoBehaviour
 
     IEnumerator init()
     {
+        yield return new WaitForSeconds(1f);
+        cam_init.init();
+
+        init_ind = 0;
+        cam_motion.Endofmotion = this;
         infectionmanager.infectCity(3);
-        infectionmanager.infectCity(3);
-        infectionmanager.infectCity(3);
-        infectionmanager.infectCity(2);
-        infectionmanager.infectCity(2);
-        infectionmanager.infectCity(2);
-        player_cards_selector.initiateSelector();
-        yield return null;
+    }
+
+    public override void EndOfMotion()
+    {
+        init_ind++;
+
+        if(init_ind<3)
+        {
+            infectionmanager.infectCity(3);
+        }
+        else if(init_ind<6)
+        {
+            infectionmanager.infectCity(2);
+        }
+        else if(init_ind==6)
+        {
+            player_cards_selector.initiateSelector();
+        }
     }
 }
