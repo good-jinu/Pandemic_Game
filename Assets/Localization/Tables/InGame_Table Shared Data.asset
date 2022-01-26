@@ -35,12 +35,8 @@ MonoBehaviour:
     m_Key: Game Over
     m_Metadata:
       m_Items: []
-  - m_Id: 1091987737542656
-    m_Key: Round Over
-    m_Metadata:
-      m_Items: []
   - m_Id: 1092199231127552
-    m_Key: Outbreaks
+    m_Key: Outbreak
     m_Metadata:
       m_Items: []
   - m_Id: 1836602245644288
@@ -57,6 +53,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1951936248152064
     m_Key: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2263892108640256
+    m_Key: you need to use card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2465055370248192
+    m_Key: Choose disease to treat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2465727805259776
+    m_Key: Discover a cure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628654961131520
+    m_Key: Not infected
     m_Metadata:
       m_Items: []
   m_Metadata:

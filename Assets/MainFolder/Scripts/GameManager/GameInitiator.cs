@@ -6,6 +6,8 @@ public class GameInitiator : CamRelated.MotionIncluding
 {
     public CityRelated.CityManager citymanager;
     public InfectionManager infectionmanager;
+    public ResearchStation researchstation;
+    public CureManager curemanager;
     public Player.PlayerManager player;
     public Player.PlayerCardSelector player_cards_selector;
     public CamRelated.CamInitiator cam_init;
@@ -15,9 +17,15 @@ public class GameInitiator : CamRelated.MotionIncluding
 
     private void Awake()
     {
+        int ind;
         citymanager.initiate();
         infectionmanager.initiate();
-        player.setLocatedCity(Random.Range(0, citymanager.Citylist.Length));
+        curemanager.init();
+
+        ind = Random.Range(0, citymanager.Citylist.Length);
+        player.setLocatedCity(ind);
+        researchstation.init();
+        researchstation.buildStation(ind);
     }
 
     private void Start()

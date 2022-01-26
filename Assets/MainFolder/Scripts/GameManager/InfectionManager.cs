@@ -85,7 +85,10 @@ public class InfectionManager : MonoBehaviour
                     topofdeck_count--;
 
                     dstate = citymanager.Citylist[ind].generateOriginDisease(cubes);
-                    cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
+                    if (dstate == CityRelated.DiseaseGneratingState.Cured)
+                        cam_motion.enqueueMotion(CamRelated.MotionKind.NotInfected, citymanager.Citylist[ind]);
+                    else
+                        cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
 
                     if (dstate==CityRelated.DiseaseGneratingState.Outbreak)
                     {
@@ -111,7 +114,10 @@ public class InfectionManager : MonoBehaviour
                     topofdeck_count--;
 
                     dstate = citymanager.Citylist[ind].generateOriginDisease(cubes);
-                    cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
+                    if (dstate == CityRelated.DiseaseGneratingState.Cured)
+                        cam_motion.enqueueMotion(CamRelated.MotionKind.NotInfected, citymanager.Citylist[ind]);
+                    else
+                        cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
 
                     if (dstate == CityRelated.DiseaseGneratingState.Outbreak)
                     {

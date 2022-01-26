@@ -2,23 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class GameEnding : MonoBehaviour
 {
     public GameObject ending_ui;
-    public GameObject ending_reason_text;
+    public Text ending_reason_text;
 
     public void gameEnds(int reason_text_index)
     {
         //0: You didn't end the pandemic in 25rounds
-        //1: You let the outbreak level reach 8
-        GameObject[] all_text = ending_reason_text.transform.GetComponentsInChildren<GameObject>();
-        for (int i = 0; i < all_text.Length; i++)
+        //1: You didn't stop the outbreak level reaching 8
+        //2: You didn't stop the one of disease becoming 20
+        switch(reason_text_index)
         {
-            all_text[i].SetActive(false);
+            case 0:
+                ending_reason_text.text = LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Over", "0");
+                break;
+            case 1:
+                ending_reason_text.text = LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Over", "1");
+                break;
+            case 2:
+                ending_reason_text.text = LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Over", "2");
+                break;
         }
-
-        all_text[reason_text_index].SetActive(true);
 
         ending_ui.SetActive(true);
     }

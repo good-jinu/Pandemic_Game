@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: InGame_Over_ko
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 9d42c97de644ea0459777e2f237265ff, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11013324800
+    m_Localized: "25\uB77C\uC6B4\uB4DC\uC548\uC5D0 \uD32C\uB370\uBBF9\uC744 \uB05D\uB0B4\uC9C0
+      \uBABB\uD588\uC2B5\uB2C8\uB2E4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114860097536
+    m_Localized: "\uD655\uC0B0\uB808\uBCA8\uC774 8\uC5D0 \uB3C4\uB2EC\uD588\uC2B5\uB2C8\uB2E4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 245835628544
+    m_Localized: "\uC9C8\uBCD1 \uC911 \uD558\uB098\uAC00 20\uAC1C\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

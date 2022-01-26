@@ -6,7 +6,7 @@ using UnityEngine.Localization.Settings;
 
 namespace CamRelated
 {
-    public enum MotionKind { Infection = 0, Outreak, End };
+    public enum MotionKind { Infection = 0, Outreak, NotInfected, End };
 
     public class CamMotion : MonoBehaviour
     {
@@ -40,7 +40,14 @@ namespace CamRelated
         private void startOutbreaknMotion(CityRelated.CityObject city)
         {
             explain_situation.text = city.textarea.GetComponent<TextMesh>().text + "\n"
-                + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Outbreaks");
+                + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Outbreak");
+            camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
+        }
+
+        private void startNotInfectedMotion(CityRelated.CityObject city)
+        {
+            explain_situation.text = city.textarea.GetComponent<TextMesh>().text + "\n"
+                + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Not infected");
             camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
         }
 
@@ -64,6 +71,9 @@ namespace CamRelated
                     case MotionKind.Outreak:
                         startOutbreaknMotion(cityQ.Dequeue());
                         break;
+                    case MotionKind.NotInfected:
+                        startNotInfectedMotion(cityQ.Dequeue());
+                        break;
                     case MotionKind.End:
                         startGameEndMotion(numQ.Dequeue());
                         break;
@@ -83,6 +93,7 @@ namespace CamRelated
             {
                 case MotionKind.Infection:
                 case MotionKind.Outreak:
+                case MotionKind.NotInfected:
                     motionQ.Enqueue(mk);
                     cityQ.Enqueue(city);
                     break;

@@ -37,7 +37,6 @@ public class InteractionManager : MonoBehaviour
                     touchedobj = hit.collider.GetComponent<CityRelated.CityObject>();
                     selected_city_ui.Selected_city = touchedobj;
                     selected_city_ui.gameObject.SetActive(true);
-                    addWindow(1);
                 }
             }
 #else
@@ -53,7 +52,6 @@ public class InteractionManager : MonoBehaviour
                     touchedobj = hit.collider.GetComponent<CityRelated.CityObject>();
                     selected_city_ui.Selected_city = touchedobj;
                     selected_city_ui.gameObject.SetActive(true);
-                    addWindow(1);
                 }
             }
 #endif
