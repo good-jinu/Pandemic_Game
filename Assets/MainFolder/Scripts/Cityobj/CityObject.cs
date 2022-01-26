@@ -21,6 +21,10 @@ namespace CityRelated
         private static bool green_cure = false;
         private static bool blue_cure = false;
         private static bool yellow_cure = false;
+        public static int red_cubes = 0;
+        public static int green_cubes = 0;
+        public static int blue_cubes = 0;
+        public static int yellow_cubes = 0;
         
         public DiseaseColor[] Disease_cubes { get { return disease_cubes; } }
         public int City_id { get { return city_id; } set { city_id = value; } }
@@ -51,15 +55,19 @@ namespace CityRelated
                     switch(newdisease)
                     {
                         case DiseaseColor.Red:
+                            red_cubes++;
                             disease_cube_renderer[i].color = new Color(1, 0, 0);
                             break;
                         case DiseaseColor.Green:
+                            green_cubes++;
                             disease_cube_renderer[i].color = new Color(0, 1, 0);
                             break;
                         case DiseaseColor.Blue:
+                            blue_cubes++;
                             disease_cube_renderer[i].color = new Color(0, 0, 1);
                             break;
                         case DiseaseColor.Yellow:
+                            yellow_cubes++;
                             disease_cube_renderer[i].color = new Color(0.97f, 0.97f, 0.0f);
                             break;
                     }
@@ -76,19 +84,19 @@ namespace CityRelated
             switch(city_color)
             {
                 case DiseaseColor.Red:
-                    if (Red_cure)
+                    if (Red_cure && (red_cubes==0))
                         return DiseaseGneratingState.Cured;
                     break;
                 case DiseaseColor.Green:
-                    if (Green_cure)
+                    if (Green_cure && (green_cubes == 0))
                         return DiseaseGneratingState.Cured;
                     break;
                 case DiseaseColor.Blue:
-                    if (Blue_cure)
+                    if (Blue_cure && (blue_cubes == 0))
                         return DiseaseGneratingState.Cured;
                     break;
                 case DiseaseColor.Yellow:
-                    if (Yellow_cure)
+                    if (Yellow_cure && (yellow_cubes == 0))
                         return DiseaseGneratingState.Cured;
                     break;
             }
@@ -108,37 +116,53 @@ namespace CityRelated
         public bool treatDisease(DiseaseColor diseasetotreat)
         {
             bool treated = false;
+            bool iscure = false;
 
-            for(int i=0; i<3; i++)
+            switch (city_color)
+            {
+                case DiseaseColor.Red:
+                    iscure = Red_cure;
+                    break;
+                case DiseaseColor.Green:
+                    iscure = Green_cure;
+                    break;
+                case DiseaseColor.Blue:
+                    iscure = Blue_cure;
+                    break;
+                case DiseaseColor.Yellow:
+                    iscure = Yellow_cure;
+                    break;
+            }
+
+            for (int i=0; i<3; i++)
             {
                 if(disease_cubes[i]==diseasetotreat)
                 {
+                    switch(diseasetotreat)
+                    {
+                        case DiseaseColor.Red:
+                            red_cubes--;
+                            break;
+                        case DiseaseColor.Green:
+                            green_cubes--;
+                            break;
+                        case DiseaseColor.Blue:
+                            blue_cubes--;
+                            break;
+                        case DiseaseColor.Yellow:
+                            yellow_cubes--;
+                            break;
+                    }
+
                     disease_cubes[i] = DiseaseColor.None;
                     disease_cube_renderer[i].color = new Color(0, 0, 0);
                     treated = true;
-                    break;
+                    if(!iscure)
+                        break;
                 }
             }
 
             return treated;
-        }
-
-        public bool treatDiseaseWithCure(DiseaseColor diseasetocure)
-        {
-            bool cured = false;
-
-            for(int i=0; i<3; i++)
-            {
-                if (disease_cubes[i] == diseasetocure)
-                {
-                    disease_cubes[i] = DiseaseColor.None;
-                    disease_cube_renderer[i].color = new Color(0, 0, 0);
-                    cured = true;
-                    break;
-                }
-            }
-
-            return cured;
         }
 
         public bool isCubeOn(DiseaseColor dcolor)

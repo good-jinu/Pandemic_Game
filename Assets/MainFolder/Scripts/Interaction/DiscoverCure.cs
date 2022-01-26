@@ -10,6 +10,7 @@ public class DiscoverCure : MonoBehaviour
     public Button blueb;
     public Button yellowb;
     public Player.PlayerCardsManager player_card_manager;
+    public CureManager curemanager;
 
     public void init()
     {
@@ -58,20 +59,6 @@ public class DiscoverCure : MonoBehaviour
 
     public void pressCureButton(int dind)
     {
-        switch(dind)
-        {
-            case 1:
-                CityRelated.CityObject.Red_cure = true;
-                break;
-            case 2:
-                CityRelated.CityObject.Green_cure = true;
-                break;
-            case 3:
-                CityRelated.CityObject.Blue_cure = true;
-                break;
-            case 4:
-                CityRelated.CityObject.Yellow_cure = true;
-                break;
-        }
+        curemanager.cureDisease((CityRelated.DiseaseColor)dind);
     }
 }

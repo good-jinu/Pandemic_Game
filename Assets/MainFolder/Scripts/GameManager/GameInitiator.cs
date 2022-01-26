@@ -7,6 +7,7 @@ public class GameInitiator : CamRelated.MotionIncluding
     public CityRelated.CityManager citymanager;
     public InfectionManager infectionmanager;
     public ResearchStation researchstation;
+    public CureManager curemanager;
     public Player.PlayerManager player;
     public Player.PlayerCardSelector player_cards_selector;
     public CamRelated.CamInitiator cam_init;
@@ -19,6 +20,7 @@ public class GameInitiator : CamRelated.MotionIncluding
         int ind;
         citymanager.initiate();
         infectionmanager.initiate();
+        curemanager.init();
 
         ind = Random.Range(0, citymanager.Citylist.Length);
         player.setLocatedCity(ind);

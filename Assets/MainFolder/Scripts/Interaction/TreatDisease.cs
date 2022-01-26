@@ -35,30 +35,6 @@ public class TreatDisease : MonoBehaviour
 
     public void pressTreatButton(int dcolor)
     {
-        bool cured = false;
-        switch(dcolor)
-        {
-            case 1:
-                cured = CityRelated.CityObject.Red_cure;
-                break;
-            case 2:
-                cured = CityRelated.CityObject.Green_cure;
-                break;
-            case 3:
-                cured = CityRelated.CityObject.Blue_cure;
-                break;
-            case 4:
-                cured = CityRelated.CityObject.Yellow_cure;
-                break;
-        }
-
-        if(cured)
-        {
-            city.treatDiseaseWithCure((CityRelated.DiseaseColor)dcolor);
-        }
-        else
-        {
-            city.treatDisease((CityRelated.DiseaseColor)dcolor);
-        }
+        city.treatDisease((CityRelated.DiseaseColor)dcolor);
     }
 }
