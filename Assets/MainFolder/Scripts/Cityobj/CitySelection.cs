@@ -12,11 +12,15 @@ namespace CityRelated
         public Button move_btn;
         public Button treat_btn;
         public Button build_btn;
+        public Button discover_btn;
         public GameObject selection_UI;
         public GameObject main_selection;
         public GameObject moveto_selection;
         public GameObject treat_selection;
+        public GameObject discover_selection;
+        public TreatDisease treat_disease;
         public ResearchStation research_station;
+        public DiscoverCure discover_cure;
         public InteractionManager interaction;
         public CityRelated.CityManager citymanager;
         public Player.PlayerCardsManager player_card_manager;
@@ -34,6 +38,7 @@ namespace CityRelated
             main_selection.SetActive(true);
             moveto_selection.SetActive(false);
             treat_selection.SetActive(false);
+            discover_selection.SetActive(false);
             cityname.text = selected_city.textarea.GetComponent<TextMesh>().text;
 
             switch(selected_city.city_color)
@@ -93,16 +98,13 @@ namespace CityRelated
             }
 
             //Treat initialize
-            treat_btn.interactable = false;
-            if(selected_city.City_id==player_manager.Current_city_id)
-            {
-                treat_btn.interactable = true;
-            }
-
             //Building initialize
+            treat_btn.interactable = false;
             build_btn.interactable = false;
+            discover_btn.interactable = false;
             if (selected_city.City_id == player_manager.Current_city_id)
             {
+                treat_btn.interactable = true;
                 for(int i=0; i<player_card_manager.Cards_count; i++)
                 {
                     if(selected_city==player_card_manager.cards[i].City)
@@ -114,6 +116,8 @@ namespace CityRelated
                         }
                     }
                 }
+
+                discover_btn.interactable = true;
             }
         }
 
@@ -142,6 +146,7 @@ namespace CityRelated
 
         public void pressTreatBtn()
         {
+            treat_disease.init(selected_city);
             main_selection.SetActive(false);
             treat_selection.SetActive(true);
         }
@@ -152,6 +157,13 @@ namespace CityRelated
             research_station.buildStation(Selected_city.City_id);
             interaction.subWindow(1);
             selection_UI.SetActive(false);
+        }
+
+        public void pressDiscoverBtn()
+        {
+            discover_cure.init();
+            main_selection.SetActive(false);
+            discover_selection.SetActive(true);
         }
     }
 }

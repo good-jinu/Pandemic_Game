@@ -63,6 +63,14 @@ MonoBehaviour:
     m_Key: you need to use card
     m_Metadata:
       m_Items: []
+  - m_Id: 2465055370248192
+    m_Key: Choose disease to treat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2465727805259776
+    m_Key: Discover a cure
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
