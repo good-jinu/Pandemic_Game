@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Player
 {
@@ -35,6 +36,11 @@ namespace Player
                 card_btn[i].GetComponent<Image>().color = btncolor;
             }
 
+            for(int i=0; i< card_selected.Length; i++)
+            {
+                card_selected[i] = false;
+            }
+
             switch(dcolor)
             {
                 case CityRelated.DiseaseColor.Red:
@@ -57,7 +63,7 @@ namespace Player
                 {
                     card_ind[ind] = i;
                     card_btn[ind].interactable = true;
-                    card_btn[ind].GetComponentInChildren<Text>().text = playercardsmanager.cards[i].City.textarea.GetComponent<TextMesh>().text;
+                    card_btn[ind].GetComponentInChildren<Text>().text = playercardsmanager.cards[i].City.textarea.GetComponent<TextMeshPro>().text;
                     card_btn[ind].GetComponent<Image>().color = btncolor;
                     ind++;
                 }
@@ -71,13 +77,30 @@ namespace Player
         {
             if(selected_num<max_select)
             {
-                selected_option[selected_num++] = ind;
-                card_btn[ind].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                if (card_selected[ind])
+                {
+                    selected_num--;
+                    card_btn[ind].GetComponent<Image>().color = btncolor;
+                    selected_num_text.text = selected_num.ToString();
+                    card_selected[ind] = false;
+                }
+                else
+                {
+                    selected_option[selected_num++] = ind;
+                    card_btn[ind].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    selected_num_text.text = selected_num.ToString();
+                    card_selected[ind] = true;
+                }
             }
             else
             {
-                selected_num--;
-                card_btn[ind].GetComponent<Image>().color = btncolor;
+                if (card_selected[ind])
+                {
+                    selected_num--;
+                    card_btn[ind].GetComponent<Image>().color = btncolor;
+                    selected_num_text.text = selected_num.ToString();
+                    card_selected[ind] = false;
+                }
             }
         }
 

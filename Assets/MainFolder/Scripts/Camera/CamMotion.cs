@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Localization.Settings;
+using TMPro;
 
 namespace CamRelated
 {
@@ -32,21 +33,21 @@ namespace CamRelated
 
         private void startInfectionMotion(CityRelated.CityObject city)
         {
-            explain_situation.text = city.textarea.GetComponent<TextMesh>().text + "\n"
+            explain_situation.text = city.textarea.GetComponent<TextMeshPro>().text + "\n"
                 + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "is infected");
             camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
         }
 
         private void startOutbreaknMotion(CityRelated.CityObject city)
         {
-            explain_situation.text = city.textarea.GetComponent<TextMesh>().text + "\n"
+            explain_situation.text = city.textarea.GetComponent<TextMeshPro>().text + "\n"
                 + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Outbreak");
             camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
         }
 
         private void startNotInfectedMotion(CityRelated.CityObject city)
         {
-            explain_situation.text = city.textarea.GetComponent<TextMesh>().text + "\n"
+            explain_situation.text = city.textarea.GetComponent<TextMeshPro>().text + "\n"
                 + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Not infected");
             camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace CardRelaed
 {
@@ -32,7 +33,7 @@ namespace CardRelaed
                     color_of_city.color = new Color(1.0f, 1.0f, 0);
                     break;
             }
-            cityname.text = city.textarea.GetComponent<TextMesh>().text;
+            cityname.text = city.textarea.GetComponent<TextMeshPro>().text;
         }
 
         public void removeCardCity()

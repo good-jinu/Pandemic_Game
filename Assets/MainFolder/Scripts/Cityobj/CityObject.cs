@@ -33,6 +33,19 @@ namespace CityRelated
         public static bool Blue_cure { get { return blue_cure; } set { blue_cure = value; } }
         public static bool Yellow_cure { get { return yellow_cure; } set { yellow_cure = value; } }
 
+        public static void init()
+        {
+            red_cubes = 0;
+            green_cubes = 0;
+            blue_cubes = 0;
+            yellow_cubes = 0;
+
+            red_cure = false;
+            green_cure = false;
+            blue_cure = false;
+            yellow_cure = false;
+        }
+
         public static bool isCubeOver()
         {
             if(red_cubes>20 && green_cubes>20 && blue_cubes>20 && yellow_cubes>20)

@@ -18,6 +18,7 @@ public class GameInitiator : CamRelated.MotionIncluding
     private void Awake()
     {
         int ind;
+        CityRelated.CityObject.init();
         citymanager.initiate();
         infectionmanager.initiate();
         curemanager.init();

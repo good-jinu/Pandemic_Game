@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace CityRelated
 {
@@ -39,7 +40,7 @@ namespace CityRelated
             moveto_selection.SetActive(false);
             treat_selection.SetActive(false);
             discover_selection.SetActive(false);
-            cityname.text = selected_city.textarea.GetComponent<TextMesh>().text;
+            cityname.text = selected_city.textarea.GetComponent<TextMeshPro>().text;
 
             switch(selected_city.city_color)
             {

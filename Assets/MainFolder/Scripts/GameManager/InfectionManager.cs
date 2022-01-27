@@ -12,8 +12,7 @@ public class InfectionManager : MonoBehaviour
     //if card is not used, it is false, or else true
     private List<int> discard_pile = new List<int>();
     private Stack<int> card_deck = new Stack<int>();
-    private bool[] outbreak_stack;
-    private int outbreak_stack_count;
+    private Stack<int> outbreak_stack = new Stack<int>();
     private int outbreak_level = 0;
 
     public void initiate()
@@ -35,8 +34,7 @@ public class InfectionManager : MonoBehaviour
             card_deck.Push(tmp);
         }
 
-        outbreak_stack = new bool[citymanager.Citylist.Length];
-        outbreak_stack_count = 0;
+        outbreak_stack.Clear();
         outbreak_level_marker.text = outbreak_level.ToString()+"/8";
     }
 
@@ -51,29 +49,25 @@ public class InfectionManager : MonoBehaviour
         }
         outbreak_level_marker.text = outbreak_level.ToString()+"/8";
 
-        outbreak_stack[cityind] = true;
-        outbreak_stack_count++;
+        outbreak_stack.Push(cityind);
 
         bool dstate;
         for(int i=0; i < citymanager.Citylist[cityind].neighbor_city.Length; i++)
         {
-            if(!outbreak_stack[citymanager.Citylist[cityind].neighbor_city[i].City_id])
+            if(!outbreak_stack.Contains(citymanager.Citylist[cityind].neighbor_city[i].City_id))
             {
-                dstate = citymanager.Citylist[i].addDisease(disease_color);
-                cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[i]);
+                outbreak_stack.Push(citymanager.Citylist[cityind].neighbor_city[i].City_id);
+
+                dstate = citymanager.Citylist[citymanager.Citylist[cityind].neighbor_city[i].City_id].addDisease(disease_color);
+                cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[citymanager.Citylist[cityind].neighbor_city[i].City_id]);
                 if(CityRelated.CityObject.isCubeOver())
                 {
                     cam_motion.enqueueMotion(CamRelated.MotionKind.End, 2);
                 }
                 if (!dstate)
                 {
-                    if (!outbreak(i, disease_color))
+                    if (!outbreak(citymanager.Citylist[cityind].neighbor_city[i].City_id, disease_color))
                         return false;
-                }
-                else
-                {
-                    outbreak_stack[i] = true;
-                    outbreak_stack_count++;
                 }
             }
         }
@@ -103,8 +97,7 @@ public class InfectionManager : MonoBehaviour
 
         if (dstate == CityRelated.DiseaseGneratingState.Outbreak)
         {
-            outbreak_stack = new bool[citymanager.Citylist.Length];
-            outbreak_stack_count = 0;
+            outbreak_stack.Clear();
             outbreak(ind, citymanager.Citylist[ind].city_color);
         }
 
@@ -125,7 +118,6 @@ public class InfectionManager : MonoBehaviour
             tmp.Push(card_deck.Pop());
 
         ind = tmp.Pop();
-        discard_pile.Add(ind);
 
         for (int i = 0; i < tmp.Count; i++)
             card_deck.Push(tmp.Pop());
@@ -135,6 +127,8 @@ public class InfectionManager : MonoBehaviour
             card_deck.Push(discard_pile[discard_tmp=Random.Range(0, i)]);
             discard_pile.RemoveAt(discard_tmp);
         }
+
+        discard_pile.Add(ind);
 
         dstate = citymanager.Citylist[ind].generateOriginDisease(3);
         if (dstate == CityRelated.DiseaseGneratingState.Cured)
@@ -152,8 +146,7 @@ public class InfectionManager : MonoBehaviour
 
         if (dstate == CityRelated.DiseaseGneratingState.Outbreak)
         {
-            outbreak_stack = new bool[citymanager.Citylist.Length];
-            outbreak_stack_count = 0;
+            outbreak_stack.Clear();
             outbreak(ind, citymanager.Citylist[ind].city_color);
         }
 

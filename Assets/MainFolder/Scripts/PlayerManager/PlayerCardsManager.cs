@@ -54,7 +54,7 @@ namespace Player
         //if it's full, it returns false, or else returns true
         public bool insertCard(CityRelated.CityObject inserted)
         {
-            if (cards_count >= 8)
+            if (cards_count >= 10)
                 return false;
 
             cities[cards_count] = inserted;

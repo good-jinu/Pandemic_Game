@@ -34,18 +34,13 @@ public class ActionManager : CamRelated.MotionIncluding
     {
         action_num = 0;
         round_num = 1;
-        infection_rate = new int[5] { 2, 2, 2, 3, 3 };
+        infection_rate = new int[6] { 2, 2, 2, 3, 3, 4 };
         infection_lvl = 0;
         epidemic_round = new bool[max_round];
 
         for(int i=0; i<5; i++)
         {
             epidemic_round[i * (max_round / 5) + Random.Range(0, max_round / 5)] = true;
-        }
-
-        for(int i=0; i<max_round; i++)
-        {
-            Debug.Log(i.ToString() + ": " + epidemic_round[i].ToString());
         }
 
         showOnUI();
