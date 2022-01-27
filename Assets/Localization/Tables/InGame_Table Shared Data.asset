@@ -31,10 +31,6 @@ MonoBehaviour:
     m_Key: Cards
     m_Metadata:
       m_Items: []
-  - m_Id: 1091106132590592
-    m_Key: Game Over
-    m_Metadata:
-      m_Items: []
   - m_Id: 1092199231127552
     m_Key: Outbreak
     m_Metadata:
@@ -69,6 +65,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2628654961131520
     m_Key: Not infected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2885338325450752
+    m_Key: Epidemic card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2890699161862144
+    m_Key: Action
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2890762449715200
+    m_Key: Round
     m_Metadata:
       m_Items: []
   m_Metadata:

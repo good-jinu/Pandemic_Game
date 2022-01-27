@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 11013324800
-    m_Localized: You didn't end the pandemic in 25rounds
+    m_Localized: You didn't end the pandemic in a game
     m_Metadata:
       m_Items: []
   - m_Id: 114860097536
@@ -27,7 +27,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 245835628544
-    m_Localized: You didn't stop the one of disease becoming 20
+    m_Localized: You didn't stop the one of disease getting over 20
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56871854669824
+    m_Localized: Game over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56948761427968
+    m_Localized: Victory
     m_Metadata:
       m_Items: []
   references:

@@ -8,12 +8,13 @@ public class GameEnding : MonoBehaviour
 {
     public GameObject ending_ui;
     public Text ending_reason_text;
+    public GameObject victory_UI;
 
     public void gameEnds(int reason_text_index)
     {
-        //0: You didn't end the pandemic in 25rounds
+        //0: You didn't end the pandemic in a game
         //1: You didn't stop the outbreak level reaching 8
-        //2: You didn't stop the one of disease becoming 20
+        //2: You didn't stop the one of disease gettig over 20
         switch(reason_text_index)
         {
             case 0:
@@ -28,5 +29,10 @@ public class GameEnding : MonoBehaviour
         }
 
         ending_ui.SetActive(true);
+    }
+
+    public void gameVictory()
+    {
+        victory_UI.SetActive(true);
     }
 }

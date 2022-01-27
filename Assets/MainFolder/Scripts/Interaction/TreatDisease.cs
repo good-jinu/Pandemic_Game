@@ -36,5 +36,6 @@ public class TreatDisease : MonoBehaviour
     public void pressTreatButton(int dcolor)
     {
         city.treatDisease((CityRelated.DiseaseColor)dcolor);
+        ActionManager.Instance.consumeAction();
     }
 }

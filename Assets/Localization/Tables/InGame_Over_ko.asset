@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 11013324800
-    m_Localized: "25\uB77C\uC6B4\uB4DC\uC548\uC5D0 \uD32C\uB370\uBBF9\uC744 \uB05D\uB0B4\uC9C0
+    m_Localized: "\uAC8C\uC784\uB3D9\uC548\uC5D0 \uD32C\uB370\uBBF9\uC744 \uB05D\uB0B4\uC9C0
       \uBABB\uD588\uC2B5\uB2C8\uB2E4."
     m_Metadata:
       m_Items: []
@@ -28,7 +28,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 245835628544
-    m_Localized: "\uC9C8\uBCD1 \uC911 \uD558\uB098\uAC00 20\uAC1C\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+    m_Localized: "\uC9C8\uBCD1 \uC911 \uD558\uB098\uAC00 20\uAC1C\uB97C \uB118\uC5C8\uC2B5\uB2C8\uB2E4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56871854669824
+    m_Localized: "\uAC8C\uC784 \uC624\uBC84"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56948761427968
+    m_Localized: "\uC2B9\uB9AC"
     m_Metadata:
       m_Items: []
   references:

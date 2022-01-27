@@ -25,19 +25,31 @@ namespace Player
         private bool[] is_card_selected = new bool[4];
         private bool[] is_discard_selected = new bool[12];
 
+        private CamRelated.MotionIncluding endofm;
+
+        public CamRelated.MotionIncluding Endofm { get { return endofm; } set { endofm = value; } }
+
         public void initiateSelector()
         {
             int tmpcityind;
+            bool[] check_tmp = new bool[4];
             int[] indlist = new int[4];
             interaction_manager.addWindow(1);
 
             for(int i=0; i<4; i++)
             {
                 tmpcityind = Random.Range(0, citymanager.Citylist.Length - i);
+                for (int j = 0; j < 4; j++)
+                    check_tmp[j] = false;
+
                 for(int j = 0; j<i; j++)
                 {
-                    if (indlist[j] == tmpcityind)
+                    if (indlist[j] <= tmpcityind && (!check_tmp[j]))
+                    {
                         tmpcityind++;
+                        check_tmp[j] = true;
+                        j = -1;
+                    }
                 }
                 indlist[i] = tmpcityind;
                 cards[i].setCardCity(citymanager.Citylist[tmpcityind]);
@@ -112,6 +124,8 @@ namespace Player
                     player_cards_manager.insertCard(selected[1]);
                     selector_screen.SetActive(false);
                     interaction_manager.subWindow(1);
+                    if (endofm != null)
+                        endofm.EndOfMotion();
                 }
             }
         }
@@ -208,6 +222,8 @@ namespace Player
 
                 selector_screen.SetActive(false);
                 interaction_manager.subWindow(1);
+                if (endofm != null)
+                    endofm.EndOfMotion();
             }
         }
     }

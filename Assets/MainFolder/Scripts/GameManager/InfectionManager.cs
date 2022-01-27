@@ -10,21 +10,32 @@ public class InfectionManager : MonoBehaviour
     public Text outbreak_level_marker;
 
     //if card is not used, it is false, or else true
-    private bool[] infection_cards_used;
-    private int infection_cards_count;
-    private bool[] topofdeck;
-    private int topofdeck_count;
+    private List<int> discard_pile = new List<int>();
+    private Stack<int> card_deck = new Stack<int>();
     private bool[] outbreak_stack;
     private int outbreak_stack_count;
     private int outbreak_level = 0;
 
     public void initiate()
     {
-        infection_cards_count = citymanager.Citylist.Length;
-        infection_cards_used = new bool[infection_cards_count];
-        topofdeck = new bool[infection_cards_count];
-        topofdeck_count = 0;
-        outbreak_stack = new bool[infection_cards_count];
+        bool[] card_tmp = new bool[citymanager.Citylist.Length];
+        int tmp;
+        discard_pile.Clear();
+        card_deck.Clear();
+
+        for(int i=citymanager.Citylist.Length; i>0; i--)
+        {
+            tmp = Random.Range(0, i);
+            for(int j=0; j<=tmp; j++)
+            {
+                if (card_tmp[j])
+                    tmp++;
+            }
+            card_tmp[tmp] = true;
+            card_deck.Push(tmp);
+        }
+
+        outbreak_stack = new bool[citymanager.Citylist.Length];
         outbreak_stack_count = 0;
         outbreak_level_marker.text = outbreak_level.ToString()+"/8";
     }
@@ -46,10 +57,14 @@ public class InfectionManager : MonoBehaviour
         bool dstate;
         for(int i=0; i < citymanager.Citylist[cityind].neighbor_city.Length; i++)
         {
-            if(!outbreak_stack[i])
+            if(!outbreak_stack[citymanager.Citylist[cityind].neighbor_city[i].City_id])
             {
                 dstate = citymanager.Citylist[i].addDisease(disease_color);
                 cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[i]);
+                if(CityRelated.CityObject.isCubeOver())
+                {
+                    cam_motion.enqueueMotion(CamRelated.MotionKind.End, 2);
+                }
                 if (!dstate)
                 {
                     if (!outbreak(i, disease_color))
@@ -69,66 +84,77 @@ public class InfectionManager : MonoBehaviour
     {
         int ind;
         CityRelated.DiseaseGneratingState dstate;
-        if (infection_cards_count <= 0)
+        if (card_deck.Count==0)
             initiate();
 
-        if (topofdeck_count > 0)
+        ind = card_deck.Pop();
+        discard_pile.Add(ind);
+
+        dstate = citymanager.Citylist[ind].generateOriginDisease(cubes);
+        if (dstate == CityRelated.DiseaseGneratingState.Cured)
+            cam_motion.enqueueMotion(CamRelated.MotionKind.NotInfected, citymanager.Citylist[ind]);
+        else
+            cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
+
+        if (CityRelated.CityObject.isCubeOver())
         {
-            ind = Random.Range(0, topofdeck_count);
-            while (ind < citymanager.Citylist.Length)
-            {
-                if (topofdeck[ind])
-                {
-                    infection_cards_used[ind] = true;
-                    infection_cards_count--;
-                    topofdeck[ind] = false;
-                    topofdeck_count--;
-
-                    dstate = citymanager.Citylist[ind].generateOriginDisease(cubes);
-                    if (dstate == CityRelated.DiseaseGneratingState.Cured)
-                        cam_motion.enqueueMotion(CamRelated.MotionKind.NotInfected, citymanager.Citylist[ind]);
-                    else
-                        cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
-
-                    if (dstate==CityRelated.DiseaseGneratingState.Outbreak)
-                    {
-                        outbreak_stack = new bool[infection_cards_count];
-                        outbreak_stack_count = 0;
-                        outbreak(ind, citymanager.Citylist[ind].city_color);
-                    }
-                    break;
-                }
-                ind++;
-            }
+            cam_motion.enqueueMotion(CamRelated.MotionKind.End, 2);
         }
+
+        if (dstate == CityRelated.DiseaseGneratingState.Outbreak)
+        {
+            outbreak_stack = new bool[citymanager.Citylist.Length];
+            outbreak_stack_count = 0;
+            outbreak(ind, citymanager.Citylist[ind].city_color);
+        }
+
+        cam_motion.startQueueMotion();
+    }
+
+    public void epidemicOccure()
+    {
+        CityRelated.DiseaseGneratingState dstate;
+        Stack<int> tmp = new Stack<int>();
+        int discard_tmp;
+        int ind;
+
+        if (card_deck.Count == 0)
+            initiate();
+
+        for(int i=0; i<card_deck.Count; i++)
+            tmp.Push(card_deck.Pop());
+
+        ind = tmp.Pop();
+        discard_pile.Add(ind);
+
+        for (int i = 0; i < tmp.Count; i++)
+            card_deck.Push(tmp.Pop());
+
+        for(int i=discard_pile.Count; i>0; i--)
+        {
+            card_deck.Push(discard_pile[discard_tmp=Random.Range(0, i)]);
+            discard_pile.RemoveAt(discard_tmp);
+        }
+
+        dstate = citymanager.Citylist[ind].generateOriginDisease(3);
+        if (dstate == CityRelated.DiseaseGneratingState.Cured)
+            cam_motion.enqueueMotion(CamRelated.MotionKind.NotInfected, citymanager.Citylist[ind]);
         else
         {
-            ind = Random.Range(0, infection_cards_count);
-            while (ind < citymanager.Citylist.Length)
-            {
-                if (!infection_cards_used[ind])
-                {
-                    infection_cards_used[ind] = true;
-                    infection_cards_count--;
-                    topofdeck[ind] = false;
-                    topofdeck_count--;
+            cam_motion.enqueueMotion(CamRelated.MotionKind.Epidemic, citymanager.Citylist[ind]);
+            cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
+        }
+        
+        if (CityRelated.CityObject.isCubeOver())
+        {
+            cam_motion.enqueueMotion(CamRelated.MotionKind.End, 2);
+        }
 
-                    dstate = citymanager.Citylist[ind].generateOriginDisease(cubes);
-                    if (dstate == CityRelated.DiseaseGneratingState.Cured)
-                        cam_motion.enqueueMotion(CamRelated.MotionKind.NotInfected, citymanager.Citylist[ind]);
-                    else
-                        cam_motion.enqueueMotion(CamRelated.MotionKind.Infection, citymanager.Citylist[ind]);
-
-                    if (dstate == CityRelated.DiseaseGneratingState.Outbreak)
-                    {
-                        outbreak_stack = new bool[infection_cards_count];
-                        outbreak_stack_count = 0;
-                        outbreak(ind, citymanager.Citylist[ind].city_color);
-                    }
-                    break;
-                }
-                ind++;
-            }
+        if (dstate == CityRelated.DiseaseGneratingState.Outbreak)
+        {
+            outbreak_stack = new bool[citymanager.Citylist.Length];
+            outbreak_stack_count = 0;
+            outbreak(ind, citymanager.Citylist[ind].city_color);
         }
 
         cam_motion.startQueueMotion();

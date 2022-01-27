@@ -6,7 +6,7 @@ using UnityEngine.Localization.Settings;
 
 namespace CamRelated
 {
-    public enum MotionKind { Infection = 0, Outreak, NotInfected, End };
+    public enum MotionKind { Infection = 0, Outreak, NotInfected, Epidemic, End };
 
     public class CamMotion : MonoBehaviour
     {
@@ -50,6 +50,11 @@ namespace CamRelated
                 + LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Not infected");
             camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
         }
+        private void startEpidemicMotion(CityRelated.CityObject city)
+        {
+            explain_situation.text = LocalizationSettings.StringDatabase.GetLocalizedString("InGame_Table", "Epidemic card");
+            camera_tr.position = new Vector3(city.transform.position.x, city.transform.position.y, camera_tr.position.z);
+        }
 
         private void startGameEndMotion(int ind)
         {
@@ -74,6 +79,9 @@ namespace CamRelated
                     case MotionKind.NotInfected:
                         startNotInfectedMotion(cityQ.Dequeue());
                         break;
+                    case MotionKind.Epidemic:
+                        startEpidemicMotion(cityQ.Dequeue());
+                        break;
                     case MotionKind.End:
                         startGameEndMotion(numQ.Dequeue());
                         break;
@@ -94,6 +102,7 @@ namespace CamRelated
                 case MotionKind.Infection:
                 case MotionKind.Outreak:
                 case MotionKind.NotInfected:
+                case MotionKind.Epidemic:
                     motionQ.Enqueue(mk);
                     cityQ.Enqueue(city);
                     break;

@@ -117,7 +117,10 @@ namespace CityRelated
                     }
                 }
 
-                discover_btn.interactable = true;
+                if(!research_station.isAvailable(selected_city.City_id))
+                {
+                    discover_btn.interactable = true;
+                }
             }
         }
 
@@ -131,6 +134,7 @@ namespace CityRelated
             else
             {
                 player_manager.setLocatedCity(selected_city.City_id);
+                ActionManager.Instance.consumeAction();
                 interaction.subWindow(1);
                 selection_UI.SetActive(false);
             }
@@ -140,6 +144,7 @@ namespace CityRelated
         {
             player_manager.setLocatedCity(selected_city.City_id);
             player_card_manager.removeCard(card_ind);
+            ActionManager.Instance.consumeAction();
             interaction.subWindow(1);
             selection_UI.SetActive(false);
         }
@@ -155,6 +160,7 @@ namespace CityRelated
         {
             player_card_manager.removeCard(card_ind);
             research_station.buildStation(Selected_city.City_id);
+            ActionManager.Instance.consumeAction();
             interaction.subWindow(1);
             selection_UI.SetActive(false);
         }

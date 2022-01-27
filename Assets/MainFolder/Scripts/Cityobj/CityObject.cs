@@ -21,10 +21,10 @@ namespace CityRelated
         private static bool green_cure = false;
         private static bool blue_cure = false;
         private static bool yellow_cure = false;
-        public static int red_cubes = 0;
-        public static int green_cubes = 0;
-        public static int blue_cubes = 0;
-        public static int yellow_cubes = 0;
+        private static int red_cubes = 0;
+        private static int green_cubes = 0;
+        private static int blue_cubes = 0;
+        private static int yellow_cubes = 0;
         
         public DiseaseColor[] Disease_cubes { get { return disease_cubes; } }
         public int City_id { get { return city_id; } set { city_id = value; } }
@@ -32,6 +32,23 @@ namespace CityRelated
         public static bool Green_cure { get { return green_cure; } set { green_cure = value; } }
         public static bool Blue_cure { get { return blue_cure; } set { blue_cure = value; } }
         public static bool Yellow_cure { get { return yellow_cure; } set { yellow_cure = value; } }
+
+        public static bool isCubeOver()
+        {
+            if(red_cubes>20 && green_cubes>20 && blue_cubes>20 && yellow_cubes>20)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool isAllCured()
+        {
+            if (red_cure && green_cure && blue_cure && yellow_cure)
+                return true;
+            else
+                return false;
+        }
 
         private void Awake()
         {

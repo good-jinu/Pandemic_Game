@@ -8,6 +8,7 @@ namespace Player
     public class PlayerCardForCureSelection : MonoBehaviour
     {
         public PlayerCardsManager playercardsmanager;
+        public GameEnding game_ends;
         public CureManager curemanager;
         public GameObject selection_UI;
         public Text selected_num_text;
@@ -106,6 +107,11 @@ namespace Player
                 }
                 curemanager.init();
                 selection_UI.SetActive(false);
+
+                if (CityRelated.CityObject.isAllCured())
+                    game_ends.gameVictory();
+                else
+                    ActionManager.Instance.consumeAction();
             }
         }
     }

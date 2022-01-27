@@ -58,6 +58,7 @@ public class GameInitiator : CamRelated.MotionIncluding
         else if(init_ind==6)
         {
             player_cards_selector.initiateSelector();
+            ActionManager.Instance.init();
         }
     }
 }
